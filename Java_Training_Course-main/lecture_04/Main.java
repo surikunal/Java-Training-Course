@@ -22,10 +22,20 @@ public class Main {
         // rotateAnArray(arr1, k);
         // binarySearchAlgo(arr1, target);
         // BSLB(arr1, target); // binary search lower bound
-        BSUB(arr1, target); // binary search upper bound
+        // BSUB(arr1, target); // binary search upper bound
+
+        // find number of target elements
+        int ans = targetCount(arr1, target);
+        System.out.println(ans);
     }
 
-    public static void BSUB(int[] arr, int tar) {   // O(logN)
+    public static int targetCount(int[] arr, int tar) {
+        int start = BSLB(arr, tar);
+        int end = BSUB(arr, tar);
+        return end - start + 1;
+    }
+
+    public static int BSUB(int[] arr, int tar) {   // O(logN)
         int start = 0, end = arr.length - 1;
         while (start <= end) {
             int mid = (start + end) / 2;
@@ -34,8 +44,8 @@ public class Main {
                 if ( mid + 1 < arr.length && arr[mid] == arr[mid + 1] ) {
                     start = mid + 1;
                 } else {
-                    System.out.println(mid);
-                    return;
+                    // System.out.println(mid);
+                    return mid;
                 }
 
             } else if (tar > arr[mid]) {
@@ -44,9 +54,10 @@ public class Main {
                 end = mid - 1;
             }
         }
+        return -1;
     }
 
-    public static void BSLB(int[] arr, int tar) {   // O(logN)
+    public static int BSLB(int[] arr, int tar) {   // O(logN)
         int start = 0, end = arr.length - 1;
         while (start <= end) {
             int mid = (start + end) / 2;
@@ -55,8 +66,8 @@ public class Main {
                 if ( mid - 1 >= 0 && arr[mid] == arr[mid - 1] ) {
                     end = mid - 1;
                 } else {
-                    System.out.println(mid);
-                    return;
+                    // System.out.println(mid);
+                    return mid;
                 }
 
             } else if (tar > arr[mid]) {
@@ -65,6 +76,7 @@ public class Main {
                 end = mid - 1;
             }
         }
+        return -1;
     }
 
     public static void binarySearchAlgo(int[] arr, int tar) {   // O(logN)
