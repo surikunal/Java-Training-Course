@@ -18,23 +18,84 @@ public class Main {
         //     System.out.print(arr[i] + ", ");
 
         // System.out.println(maximumSumSubarray(arr));
-        int[][] arr = {{1, 2, 3, 4, 5},
-                       {6, 7, 8, 9, 10},
-                       {11, 12, 13, 14, 15},
-                       {16, 17, 18, 19, 20},
-                       {21, 22, 23, 24, 25}};
-        waveTraversal(arr);
+        // int[][] arr = {{1, 2, 3, 4, 5},
+        //                {6, 7, 8, 9, 10},
+        //                {11, 12, 13, 14, 15},
+        //                {16, 17, 18, 19, 20},
+        //                {21, 22, 23, 24, 25}};
+        // waveTraversal_01(arr);
+        // waveTraversal_02(arr);
+
+        System.out.println("Input row size :");
+        int n = scn.nextInt();
+        System.out.println("Input col size :");
+        int m = scn.nextInt();
+        int[][] arr = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = scn.nextInt();
+            }
+        }
+        spiralTraversal_01(arr);
     }
 
-    public static void waveTraversal(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (i % 2 == 0) {
-                for (int j = 0; j < arr[0].length; j++) {
-                    System.out.print(arr[i][j] + ",");
+    public static void spiralTraversal_01(int[][] arr) {
+        int minR = 0;
+        int minC = 0;
+        int maxR = arr.length - 1;
+        int maxC = arr[0].length - 1;
+        int count = 0;
+        int total = arr.length * arr[0].length;
+        while (count < total) {
+            for (int c = minC; c <= maxC; c++) {
+                System.out.print(arr[minR][c] + ",");
+                count++;
+            }
+            minR++;
+
+            for (int r = minR; r <= maxR; r++) {
+                System.out.print(arr[r][maxC] + ",");
+                count++;
+            }
+            maxC--;
+
+            for (int c = maxC; c >= minC; c--) {
+                System.out.print(arr[maxR][c] + ",");
+                count++;
+            }
+            maxR--;
+
+            for (int r = maxR; r >= minR; r--) {
+                System.out.print(arr[r][minC] + ",");
+                count++;
+            }
+            minC++;
+        }
+    }
+
+    public static void waveTraversal_02(int[][] arr) {
+        for (int col = 0; col < arr.length; col++) {
+            if (col % 2 == 0) {
+                for (int row = 0; row < arr[0].length; row++) {
+                    System.out.print(arr[row][col] + ",");
                 }
             } else {
-                for (int j = arr[0].length - 1; j >= 0; j--) {
-                    System.out.print(arr[i][j] + ",");
+                for (int row = arr[0].length - 1; row >= 0; row--) {
+                    System.out.print(arr[row][col] + ",");
+                }
+            }
+        }
+    }
+
+    public static void waveTraversal_01(int[][] arr) {
+        for (int row = 0; row < arr.length; row++) {
+            if (row % 2 == 0) {
+                for (int col = 0; col < arr[0].length; col++) {
+                    System.out.print(arr[row][col] + ",");
+                }
+            } else {
+                for (int col = arr[0].length - 1; col >= 0; col--) {
+                    System.out.print(arr[row][col] + ",");
                 }
             }
         }
