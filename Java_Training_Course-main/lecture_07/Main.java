@@ -23,13 +23,13 @@ public class Main {
         // }
         // multiplication of 2 matrices
         // multiply2DMatrix(n1, m1, mat1, n2, m2, mat2);
-        int[][] arr = {
-            {1, 2, 3, 4, 5},
-            {6, 7, 8, 9, 10},
-            {11, 12, 13, 14, 15},
-            {16, 17, 18, 19, 20},
-            {21, 22, 23, 24, 25}
-        };
+        // int[][] arr = {
+        //     {1, 2, 3, 4, 5},
+        //     {6, 7, 8, 9, 10},
+        //     {11, 12, 13, 14, 15},
+        //     {16, 17, 18, 19, 20},
+        //     {21, 22, 23, 24, 25}
+        // };
         // diagonalTraversal(arr);
         // transpose(arr);
         // display(arr);
